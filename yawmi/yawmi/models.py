@@ -10,13 +10,13 @@ class Cours(db.Model):
     id = db.Column(db.Integer,
                    unique=True, autoincrement=True)
     name = db.Column(db.String(100),primary_key=True,)
-    images = db.Column(db)
+    images = db.Column(db.LargeBinary, nullable = True)
     url = db.Column(db.String())
-    category = db.column(db.String(100))
+    category = db.Column(db.String(100))
 
 class Planning(db.Model):
     __Tablename__ = 'planning'
-    id = db.column(db.integer, primary_key=True,
+    id = db.Column(db.Integer, primary_key=True,
                    unique=True, autoincrement=True)
     name_cours = db.Column(db.Integer, db.ForeignKey('Cours.name'))
     id_user = db.Column(db.Integer, db.ForeignKey('User.id'))

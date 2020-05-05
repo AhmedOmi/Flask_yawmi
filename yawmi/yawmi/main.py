@@ -5,7 +5,7 @@ from flask_login import login_required, current_user
 
 main = Blueprint('main', __name__)
 
-data = pd.read_csv("csv/file.csv")
+data = pd.read_csv("yawmi/csv/file_clean.csv",sep=";")
 dff = np.asarray(data)
 
 
