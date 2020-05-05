@@ -1,9 +1,46 @@
-{% extends "base.html" %}
+{% extends "base_profile.html" %}
 
 {% block content %}
 <h1 class="title">
     Welcome, {{ name }}!
   </h1>
-{%include "planning.html"%}
-{% block content %}{% endblock %}
+<section class="carousel slide" data-ride="carousel" id="postsCarousel">
+    <div class="row">
+        <div class="col-8">
+            <div class="container-fluid pt-0 mt-2 mx-4 carousel-inner">
+            {% for cours_3 in cours_list|batch(3) %}
+                <div class="carousel-item {% if loop.index==1 %}active{% endif %} mt-0">
+                    <div class="card-deck text-center">
+                        {% for cours in cours_3 %}
+                        <div class="card">
+                            <img class="card-img-top" src="{{cours.image}}" alt="Carousel 1">
+                            <div class="card-body pt-2">
+                                <small class="text-muted">{{cours.category}}</small>
+                                <h2 class="card-title">
+                                    {{ cours.name }}
+                                </h2>
+                                <a href="/follow_course/{{cours.id}}" class="btn btn-info stretched-link">Voir ce cours</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        <a class="carousel-control-prev" href="#postsCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#postsCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+        </div>
+        <div class="col-4">
+            {%include "planning.html"%}
+        </div>
+    </div>
+</section>
+</div>
+
 {% endblock %}

@@ -8,23 +8,34 @@ from wtforms_sqlalchemy.fields import QuerySelectField
 class Cours(db.Model):
     __Tablename__ = 'cours'
     id = db.Column(db.Integer,
-                   unique=True, autoincrement=True)
-    name = db.Column(db.String(100),primary_key=True,)
-    images = db.Column(db.LargeBinary, nullable = True)
-    url = db.Column(db.String())
+                   primary_key=True)
+    name = db.Column(db.String(100))
+    image = db.Column(db.String(200), nullable = True)
+    url = db.Column(db.String(200))
     category = db.Column(db.String(100))
+
 
 class Planning(db.Model):
     __Tablename__ = 'planning'
     id = db.Column(db.Integer, primary_key=True,
                    unique=True, autoincrement=True)
-    name_cours = db.Column(db.Integer, db.ForeignKey('Cours.name'))
-    id_user = db.Column(db.Integer, db.ForeignKey('User.id'))
+    name_cours = db.Column(db.Integer, db.ForeignKey('cours.name'))
+    id_user = db.Column(db.Integer, db.ForeignKey('user.id'))
     start_date = db.Column(db.DateTime)
     end_date = db.Column(db.DateTime)
-    
+
     def __repr__(self):
         return '[Plannings {}]'.format(self.id_cours)
+
+
+class Clic(db.Model):
+    __Tablename__ = 'clic'
+    id = db.Column(db.Integer, primary_key=True,
+                   unique=True, autoincrement=True)
+    id_cours = db.Column(db.Integer, db.ForeignKey('cours.id'))
+    id_user = db.Column(db.Integer, db.ForeignKey('user.id'))
+    date = db.Column(db.DateTime)
+
 
 def planning_query():
     return Planning.query 

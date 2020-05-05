@@ -1,3 +1,3 @@
-from yawmi import create_app
+from yawmi import create_app,db
 
 app = create_app()

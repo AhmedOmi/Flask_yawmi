@@ -1,12 +1,10 @@
-import pandas as pd
-import numpy as np
-from flask import Flask, Blueprint, render_template
+from flask import Flask, Blueprint, render_template,redirect
 from flask_login import login_required, current_user
-
+from .models import Cours,Clic
+from datetime import datetime
+from . import db
 main = Blueprint('main', __name__)
 
-data = pd.read_csv("yawmi/csv/file_clean.csv",sep=";")
-dff = np.asarray(data)
 
 
 @main.route('/')
@@ -37,4 +35,14 @@ def contact():
 @main.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html', name=current_user.name)
+    cours=Cours.query.limit(30).all()
+    return render_template('profile.html', name=current_user.name,cours_list=cours)
+
+@main.route('/follow_course/<int:cours_id>')
+@login_required
+def follow_course(cours_id):
+
+    clic=Clic(id_user=current_user.id,id_cours=cours_id,date=datetime.now())
+    db.session.add(clic)
+    db.session.commit()
+    return redirect(Cours.query.get(cours_id).url)
