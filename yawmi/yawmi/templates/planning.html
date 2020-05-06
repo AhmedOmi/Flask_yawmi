@@ -1,34 +1,33 @@
 <div class="form-style-5">
-    <form action="/planning" method="POST">
+    <form action="/apply" method="POST">
     <fieldset>
     <legend><span class="number"></span>Planning</legend>
     <label for="job">Category:</label>
     <select id="job" name="field4">
     <optgroup label="Indoors">
-      <option value="fishkeeping">Fishkeeping</option>
-      <option value="reading">Reading</option>
+      <option value="Reading">Reading</option>
+      <option value="coding">coding</option>
       <option value="boxing">Boxing</option>
       <option value="debate">Debate</option>
       <option value="gaming">Gaming</option>
       <option value="snooker">Snooker</option>
+      <option value="cooking">cooking</option>
       <option value="other_indoor">Other</option>
     </optgroup>
-    </select>      
-    <label for="job">BookName:</label>
+    </select><br>      
+    <label for="job">Resource-type:</label>
     <select id="job" name="field4">
     <optgroup label="Indoors">
-      <option value="fishkeeping">Fishkeeping</option>
-      <option value="reading">Reading</option>
-      <option value="boxing">Boxing</option>
+      <option value="Book">Book</option>
+      <option value="Course">Course</option>
+      <option value="Article">Article</option>
       <option value="debate">Debate</option>
-      <option value="gaming">Gaming</option>
-      <option value="snooker">Snooker</option>
       <option value="other_indoor">Other</option>
     </optgroup>
-    </select>
-    Start: <input type="datetime-local" placeholder="Start">
-    End: <input type="datetime-local" placeholder="End">
-    <input type="submit" value="Apply" />
+    </select><br>
+    Start-date: <input type="datetime-local" placeholder="Start"><br>
+    End-date   : <input type="datetime-local" placeholder="End"><br>
+    <input type="submit" value="Apply"/>
     </fieldset>
     </form>
     </div>

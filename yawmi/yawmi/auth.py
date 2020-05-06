@@ -78,3 +78,7 @@ def plan():
         return '<html><h1>{}</h1></html>'.format(form.opts.data)
 
     return render_template('planning.html', form=form)
+@auth.route('/apply',methods=['GET','POST'])
+def apply():
+    flash('your application is saved')
+    return render_template('new.html')
