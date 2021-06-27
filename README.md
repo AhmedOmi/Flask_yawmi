@@ -9,7 +9,7 @@ Flask and machine learning tools TensorFlow . it's a todo list project with many
 ### Run
 
 this projects will be run :
-> cd Flask_yawmi
-> cd yawmi
-> export FLASK_APP=run.py
-> flask run --host=0.0.0.0
+$ cd Flask_yawmi
+$ cd yawmi
+$ export FLASK_APP=run.py
+$ flask run --host=0.0.0.0
